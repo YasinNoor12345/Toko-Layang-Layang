@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Layang Layang</title>
+    
+    <!-- Tailwind CSS inladen via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts inladen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Aangepaste configuratie voor Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Lora', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        toko: {
+                            purple: '#3b2559',
+                            orange: '#d99e52',
+                            dark: '#1a202c',
+                            footer: '#382a46'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+        }
+        .footer-pattern {
+            background-color: #382a46;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 lg:px-8 py-3 flex flex-wrap justify-between items-center gap-4">
+            
+            <!-- Logo & Titel -->
+            <a href="index.html" class="flex items-center gap-4 hover:opacity-90 transition-opacity">
+                <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden border border-gray-300">
+                    <img src="https://placehold.co/100x100/ffffff/3b2559?text=Logo" alt="Toko Layang Layang Logo" class="object-cover w-full h-full">
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-2xl font-serif font-bold text-toko-purple m-0 leading-tight">Toko Layang Layang</h1>
+                    <span class="text-toko-orange text-xs font-semibold tracking-widest uppercase mt-1">Malaysian & Indonesian Food</span>
+                </div>
+            </a>
+
+            <!-- Openingstijden & Status (dynamisch, netjes onder elkaar) -->
+            <div class="flex flex-col items-end text-right text-sm md:text-base leading-snug">
+                <span id="openingsTijd" class="font-medium text-gray-700">Openingstijden laden...</span>
+                <span id="openingsStatus" class="font-bold text-gray-400">...</span>
+            </div>
+        </div>
+        <!-- Gele lijn onder de header -->
+        <div class="h-1 w-full bg-yellow-400"></div>
+    </header>
+
+    <!-- HERO SECTION MET 3 KAARTEN -->
+    <section class="relative bg-toko-dark py-16 md:py-24 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-black/60"></div>
+        
+        <div class="container relative mx-auto px-4 z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                
+                <!-- Kaart 1: Menu -->
+                <div class="relative h-[300px] rounded-2xl overflow-hidden group">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="absolute inset-0 card-overlay"></div>
+                    <div class="relative h-full flex flex-col items-center justify-center text-white p-6">
+                        <h2 class="text-3xl font-serif mb-2">Menu</h2>
+                        <div class="w-16 h-0.5 bg-teal-500 mb-8"></div>
+                        <a href="menu.html" class="px-8 py-2 border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 text-sm tracking-wide font-medium">
+                            Bekijk Menu
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kaart 2: Bestellen -->
+                <div class="relative h-[300px] rounded-2xl overflow-hidden group">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1627308595229-7830f5c92f75?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="absolute inset-0 card-overlay"></div>
+                    <div class="relative h-full flex flex-col items-center justify-center text-white p-6">
+                        <h2 class="text-3xl font-serif mb-2">Bestellen</h2>
+                        <div class="w-16 h-0.5 bg-teal-500 mb-6"></div>
+                        <div class="flex flex-col gap-3 w-full max-w-[200px]">
+                            <a href="menu.html" class="w-full text-center px-6 py-2 border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 text-sm tracking-wide font-medium">
+                                Afhalen
+                            </a>
+                            <a href="menu.html" class="w-full text-center px-6 py-2 border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 text-sm tracking-wide font-medium">
+                                Bezorgen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kaart 3: Catering -->
+                <div class="relative h-[300px] rounded-2xl overflow-hidden group">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1548943487-a2e4f43b4850?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="absolute inset-0 card-overlay"></div>
+                    <div class="relative h-full flex flex-col items-center justify-center text-white p-6">
+                        <h2 class="text-3xl font-serif mb-2">Catering</h2>
+                        <div class="w-16 h-0.5 bg-teal-500 mb-6"></div>
+                        <div class="flex flex-col gap-3 w-full max-w-[200px]">
+                            <a href="catering.html" class="w-full text-center px-6 py-2 border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 text-sm tracking-wide font-medium">
+                                Gesprek starten
+                            </a>
+                            <a href="catering.html" class="w-full text-center px-6 py-2 border-2 border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300 text-sm tracking-wide font-medium">
+                                Meer info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTION: Over Catering -->
+    <section class="bg-white py-16 md:py-24">
+        <div class="container mx-auto px-4 lg:px-16 max-w-6xl">
+            
+            <h2 class="text-4xl font-serif font-bold text-black mb-10 text-center md:text-left">Over Catering</h2>
+            
+            <div class="flex flex-col md:flex-row gap-10 lg:gap-16 items-center">
+                
+                <div class="w-full md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Catering Buffet" 
+                         class="w-full h-auto rounded-xl shadow-lg object-cover">
+                </div>
+
+                <div class="w-full md:w-1/2 space-y-6 text-gray-700 leading-relaxed text-lg">
+                    <p>
+                        Hoi, wij zijn Toko Layang Layang, een gezellig restaurant dat gespecialiseerd is in de heerlijke smaken van Maleisische en Indonesische gerechten. Ons team staat klaar om je te verwennen met authentieke recepten en verse ingrediënten.
+                    </p>
+                    <p>
+                        Wij bieden ook cateringdiensten aan voor evenementen, feesten en zakelijke bijeenkomsten. Of je nu een intiem diner of een groot feest plant, wij zorgen ervoor dat je gasten kunnen genieten van de rijke smaken van onze keuken.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CATERING ORNAMENT SECTION -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-serif text-gray-800 mb-2">Catering</h3>
+            <p class="text-gray-600 mb-4 text-sm">Levering van heerlijke gerechten voor al uw evenementen</p>
+            
+            <div class="flex justify-center items-center gap-2">
+                <div class="w-12 h-[1px] bg-gray-400"></div>
+                <span class="text-gray-400 text-xl font-serif">~&#10045;~</span>
+                <div class="w-12 h-[1px] bg-gray-400"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-pattern text-gray-200 py-6 border-t-4 border-t-toko-purple">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <a href="reviews.html" class="text-xl md:text-2xl font-serif hover:text-white transition-colors">Reviews</a>
+            <a href="privacy.html" class="text-xl md:text-2xl font-serif hover:text-white transition-colors">Privacy</a>
+            <a href="index.html" class="text-xl md:text-2xl font-serif hover:text-white transition-colors">BCSY-@co</a>
+            
+        </div>
+    </footer>
+
+    <!-- SCRIPT VOOR DYNAMISCHE OPENINGSTIJDEN -->
+    <script>
+        // ============================================================
+        // INSTELLINGEN: Pas hier de openingstijden aan
+        // ============================================================
+        // 0 = Zondag, 1 = Maandag, 2 = Dinsdag, 3 = Woensdag,
+        // 4 = Donderdag, 5 = Vrijdag, 6 = Zaterdag
+        const openingsTijden = {
+            0: { naam: "Zondag",    open: true,  van: "16:00", tot: "20:00" },
+            1: { naam: "Maandag",   open: false, van: null,    tot: null    },
+            2: { naam: "Dinsdag",   open: true,  van: "16:00", tot: "20:00" },
+            3: { naam: "Woensdag",  open: true,  van: "12:00", tot: "20:00" },
+            4: { naam: "Donderdag", open: true,  van: "12:00", tot: "20:00" },
+            5: { naam: "Vrijdag",   open: true,  van: "12:00", tot: "20:00" },
+            6: { naam: "Zaterdag",  open: true,  van: "12:00", tot: "20:00" }
+        };
+
+        // Optioneel: forceer een specifieke dag voor testen (null = echte dag).
+        // 0=zo, 1=ma, 2=di, 3=wo, 4=do, 5=vr, 6=za
+        const geforceerdeDag = null;
+
+        // ============================================================ 
+        // LOGICA
+        // ============================================================
+        const nu = new Date();
+        const vandaag = (geforceerdeDag !== null) ? geforceerdeDag : nu.getDay();
+        const info = openingsTijden[vandaag];
+
+        const tijdElement = document.getElementById('openingsTijd');
+        const statusElement = document.getElementById('openingsStatus');
+
+        // Hulpfunctie: "16:00" -> 960 (minuten sinds middernacht)
+        function naarMinuten(tijdString) {
+            const [u, m] = tijdString.split(':').map(Number);
+            return u * 60 + m;
+        }
+
+        // 1) Toon de openingstijd van vandaag
+        if (info.open) {
+            tijdElement.textContent = `${info.naam}: ${info.van} – ${info.tot} uur`;
+        } else {
+            tijdElement.textContent = `${info.naam}: Gesloten`;
+        }
+
+        // 2) Bepaal of we NU open zijn (op basis van huidige klok)
+        let isNuOpen = false;
+        if (info.open) {
+            const huidigeMinuten = nu.getHours() * 60 + nu.getMinutes();
+            const startMinuten = naarMinuten(info.van);
+            const eindMinuten = naarMinuten(info.tot);
+            isNuOpen = huidigeMinuten >= startMinuten && huidigeMinuten < eindMinuten;
+        }
+
+        // 3) Toon de status
+        if (isNuOpen) {
+            statusElement.textContent = "Nu geopend";
+            statusElement.className = "font-bold text-green-600";
+        } else if (info.open) {
+            statusElement.textContent = "Nu gesloten";
+            statusElement.className = "font-bold text-red-600";
+        } else {
+            statusElement.textContent = "Vandaag gesloten";
+            statusElement.className = "font-bold text-red-600";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Toko Layang Layang</title>
+    
+    <!-- Tailwind CSS inladen via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts inladen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Lora', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        toko: {
+                            purple: '#3b2559',
+                            orange: '#d99e52',
+                            dark: '#1a202c',
+                            footer: '#382a46'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .footer-pattern {
+            background-color: #382a46;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 lg:px-8 py-3 flex flex-wrap justify-between items-center">
+            
+            <!-- Logo & Titel (Klikbaar naar homepagina) -->
+            <a href="index.html" class="flex items-center gap-4 hover:opacity-90 transition-opacity">
+                <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden border border-gray-300">
+                    <img src="https://placehold.co/100x100/ffffff/3b2559?text=Logo" alt="Toko Layang Layang Logo" class="object-cover w-full h-full">
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-2xl font-serif font-bold text-toko-purple m-0 leading-tight">Toko Layang Layang</h1>
+                    <span class="text-toko-orange text-xs font-semibold tracking-widest uppercase mt-1">Malaysian & Indonesian Food</span>
+                </div>
+            </a>
+
+            <!-- Openingstijden & Navigatie Knop -->
+            <div class="flex items-center gap-6 mt-4 sm:mt-0 text-sm md:text-base">
+                <a href="index.html" class="text-toko-purple hover:text-toko-orange font-semibold transition-colors">← Terug naar Home</a>
+                <span class="font-bold text-gray-900 border-l-2 border-gray-300 pl-6">OPEN</span>
+            </div>
+        </div>
+        <div class="h-1 w-full bg-yellow-400"></div>
+    </header>
+
+    <!-- HERO TITLE -->
+    <section class="bg-toko-purple text-white py-12 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-3">Ons Menukaart</h1>
+            <p class="text-toko-orange max-w-xl mx-auto text-sm md:text-base">
+                Ontdek onze authentieke Maleisische en Indonesische gerechten, vers voor u bereid met traditionele kruiden.
+            </p>
+        </div>
+    </section>
+
+    <!-- MENU CONTENT -->
+    <main class="container mx-auto px-4 lg:px-8 py-12">
+        
+        <!-- Hoofdgerechten Categorie -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-serif text-toko-purple font-bold mb-6 border-b-2 border-toko-orange pb-2 inline-block">
+                Vlees & Vis
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Gerecht 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Daging Smoor</h3>
+                        <p class="text-gray-600 text-sm mt-1">RUNDVLEES IN ZOETE KETJAPSAUS.</p>
+                        <span class="inline-block mt-3 bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-medium">Licht pittig</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 14,50</div>
+                </div>
+
+                <!-- Gerecht 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Daging Gulai</h3>
+                        <p class="text-gray-600 text-sm mt-1">RUNDVLEES IN KRUIDIGE SAUS.</p>
+                        <span class="inline-block mt-3 bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-medium">Populair</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 12,95</div>
+                </div>
+
+                <!-- Gerecht 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Daging Rendang</h3>
+                        <p class="text-gray-600 text-sm mt-1">RUNDVLEES IN pittige kokossaus.</p>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 13,50</div>
+                </div>
+
+                <!-- Gerecht 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Daging Blado</h3>
+                        <p class="text-gray-600 text-sm mt-1">RUNDVLEES IN pittige saus met peteh.</p>
+                        <span class="inline-block mt-3 bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-medium">Vegetarisch</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 11,50</div>
+                </div>
+
+                <!-- Gerecht 5 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Rempeng Ketjap</h3>
+                        <p class="text-gray-600 text-sm mt-1">kruidige runderballetjes in zoet pikante ketjap.</p>
+                        <span class="inline-block mt-3 bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-medium">Licht pittig</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 14,50</div>
+                </div>
+
+                <!-- Gerecht 6 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Goelee Kambing</h3>
+                        <p class="text-gray-600 text-sm mt-1">RUNDVLEES IN KRUIDIGE SAUS.</p>
+                        <span class="inline-block mt-3 bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-medium">Populair</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 12,95</div>
+                </div>
+
+                <!-- Gerecht 7 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Ayam Ketjap</h3>
+                        <p class="text-gray-600 text-sm mt-1">kipfilet in zoete ketjapsaus</p>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 13,50</div>
+                </div>
+
+                <!-- Gerecht 8 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Ayam Kerrie</h3>
+                        <p class="text-gray-600 text-sm mt-1">kipfilet in milde kerriesaus.</p>
+                        <span class="inline-block mt-3 bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-medium">Vegetarisch</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 11,50</div>
+                </div>
+               
+                <!-- Gerecht 9 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Ayam Pedas</h3>
+                        <p class="text-gray-600 text-sm mt-1">Kipfilet in pittige saus.</p>
+                        <span class="inline-block mt-3 bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-medium">Vegetarisch</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 11,50</div>
+                </div>
+               
+                <!-- Gerecht 10 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Ayam Cashew</h3>
+                        <p class="text-gray-600 text-sm mt-1">Kipfilet in gember-honingsaus met cashewnoten</p>
+                        <span class="inline-block mt-3 bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-medium">Vegetarisch</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 11,50</div>
+                </div>
+
+            
+                <!-- Gerecht 11 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex justify-between gap-4">
+                    <div>
+                        <h3 class="text-xl font-serif font-semibold text-gray-900">Ikan Bali</h3>
+                        <p class="text-gray-600 text-sm mt-1">Gebakken makreel in pittige saus</p>
+                        <span class="inline-block mt-3 bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-medium">Vegetarisch</span>
+                    </div>
+                    <div class="text-xl font-bold text-toko-purple font-serif">€ 11,50</div>
+                </div>
+            </div>
+        </div>
+        <!-- Gamba's -->
+        <div>
+            <h2 class="text-3xl font-serif text-toko-purple font-bold mb-6 border-b-2 border-toko-orange pb-2 inline-block">
+                Gamba's
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Snack 1 -->
+                <div class="bg-white p-5 rounded-xl shadow-md border border-gray-100">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-serif font-semibold text-lg text-gray-900">Udang Peteh</h3>
+                        <span class="font-bold text-toko-purple">€ 6,50</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Gamba’s in pittige saus met peteh</p>
+                </div>
+
+                <!-- Snack 2 -->
+                <div class="bg-white p-5 rounded-xl shadow-md border border-gray-100">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-serif font-semibold text-lg text-gray-900">Udang Manis</h3>
+                        <span class="font-bold text-toko-purple">€ 4,50</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Gamba’s in tomaten-knoflooksaus</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-pattern text-gray-200 py-6 border-t-4 border-t-toko-purple mt-12">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="reviews.html" class="text-xl md:text-2xl font-serif hover:text-white transition-colors">Reviews</a>
+            <a href="privacy.html" class="text-xl md:text-2xl font-serif hover:text-white transition-colors">Privacy</a>
+            <a href="index.html" class="text-xl md:text-2xl font-serif hover:text-white transition-colors">BCSY-@co</a>
+        </div>
+    </footer>
+
+</body>
+</html>

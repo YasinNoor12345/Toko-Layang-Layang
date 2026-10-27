@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bestellen | Menu</title>
+	<style>
+		:root { --primary: #d94f30; --dark: #252525; --light: #fff8f2; }
+		* { box-sizing: border-box; }
+		body { margin: 0; font-family: Arial, sans-serif; color: var(--dark); background: var(--light); }
+		header { padding: 2.5rem 1.25rem; text-align: center; background: var(--primary); color: white; }
+		header h1 { margin: 0 0 .5rem; font-size: clamp(2rem, 5vw, 3.5rem); }
+		main { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 2rem; max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+		h2 { margin-top: 0; }
+		.menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+		.item, .cart { background: white; border-radius: 12px; padding: 1.2rem; box-shadow: 0 3px 12px #00000012; }
+		.item { display: flex; flex-direction: column; gap: .7rem; }
+		.item h3 { margin: 0; }
+		.item p { flex: 1; margin: 0; color: #666; line-height: 1.4; }
+		.price { font-weight: bold; font-size: 1.1rem; }
+		button { border: 0; border-radius: 7px; padding: .7rem 1rem; cursor: pointer; font-weight: bold; }
+		.add, .checkout { background: var(--primary); color: white; }
+		.add:hover, .checkout:hover { background: #b83d22; }
+		.cart { position: sticky; top: 1rem; height: fit-content; }
+		#cart-items { list-style: none; padding: 0; margin: 0 0 1rem; }
+		#cart-items li { display: flex; align-items: center; gap: .5rem; padding: .7rem 0; border-bottom: 1px solid #eee; }
+		.cart-name { flex: 1; }
+		.quantity { display: flex; align-items: center; gap: .35rem; }
+		.quantity button { padding: .2rem .55rem; background: #eee; }
+		.total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin: 1rem 0; }
+		.checkout { width: 100%; }
+		.empty { color: #777; text-align: center; padding: 1rem 0; }
+		@media (max-width: 760px) { main { grid-template-columns: 1fr; } .cart { position: static; } }
+	</style>
+</head>
+<body>
+	<header><h1>Ons menu</h1><p>Kies je favorieten en voeg ze toe aan je winkelmandje.</p></header>
+	<main>
+		<section>
+			<h2>Menu</h2>
+			<div class="menu" id="menu"></div>
+		</section>
+		<aside class="cart">
+			<h2>Winkelmandje</h2>
+			<ul id="cart-items"><li class="empty">Je winkelmandje is leeg.</li></ul>
+			<div class="total"><span>Totaal</span><span id="total">€ 0,00</span></div>
+			<button class="checkout" onclick="checkout()">Bestelling plaatsen</button>
+		</aside>
+	</main>
+	<script>
+		const menu = [
+			{ id: 1, name: 'Classic Burger', description: 'Sappige burger met sla, tomaat en huisgemaakte saus.', price: 9.95 },
+			{ id: 2, name: 'Margherita Pizza', description: 'Pizza met tomaat, mozzarella en verse basilicum.', price: 10.50 },
+			{ id: 3, name: 'Caesar Salad', description: 'Knapperige salade met kip, Parmezaan en dressing.', price: 8.75 },
+			{ id: 4, name: 'Frietjes', description: 'Goudgele frietjes met een saus naar keuze.', price: 3.25 },
+			{ id: 5, name: 'Pasta Pesto', description: 'Romige pasta met pesto, rucola en cherrytomaat.', price: 11.25 },
+			{ id: 6, name: 'Chocoladetaart', description: 'Zachte chocoladetaart met slagroom.', price: 4.50 },
+			{ id: 7, name: 'Verse limonade', description: 'Verfrissende huisgemaakte limonade.', price: 2.75 },
+			{ id: 8, name: 'Koffie', description: 'Een heerlijke verse koffie.', price: 2.25 }
+		];
+		const cart = {};
+		const euro = value => `€ ${value.toFixed(2).replace('.', ',')}`;
+
+		document.getElementById('menu').innerHTML = menu.map(item => `
+			<article class="item"><h3>${item.name}</h3><p>${item.description}</p>
+				<span class="price">${euro(item.price)}</span>
+				<button class="add" onclick="add(${item.id})">Toevoegen</button>
+			</article>`).join('');
+
+		function add(id) { cart[id] = (cart[id] || 0) + 1; renderCart(); }
+		function change(id, amount) { cart[id] += amount; if (cart[id] <= 0) delete cart[id]; renderCart(); }
+		function renderCart() {
+			const entries = Object.entries(cart);
+			document.getElementById('cart-items').innerHTML = entries.length ? entries.map(([id, quantity]) => {
+				const item = menu.find(product => product.id == id);
+				return `<li><span class="cart-name">${item.name}</span><span class="quantity"><button onclick="change(${id}, -1)">−</button>${quantity}<button onclick="change(${id}, 1)">+</button></span></li>`;
+			}).join('') : '<li class="empty">Je winkelmandje is leeg.</li>';
+			document.getElementById('total').textContent = euro(entries.reduce((sum, [id, quantity]) => sum + menu.find(item => item.id == id).price * quantity, 0));
+		}
+		function checkout() {
+			if (!Object.keys(cart).length) return alert('Je winkelmandje is nog leeg.');
+			alert('Bedankt! Je bestelling is geplaatst.');
+		}
+	</script>
+</body>
+</html>
