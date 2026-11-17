@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Layang-Layang</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" data-view="home">Toko Layang-Layang</div>
+    <nav class="nav-links">
+      <button class="nav-btn active" data-view="home">Home</button>
+      <button class="nav-btn" data-view="menu">Menu</button>
+      <button class="nav-btn" data-view="bestellen">
+        Bestellen (<span id="cart-count">0</span>)
+      </button>
+      <button class="nav-btn" data-view="security">Beheer</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- VIEW 1: HOME -->
+    <section id="view-home" class="view active">
+      <div class="hero">
+        <h1>Welkom bij Toko Layang-Layang</h1>
+        <p>Authentieke Indonesische gerechten, dagelijks vers bereid volgens familierecept.</p>
+        <div class="hero-actions">
+          <button class="btn primary" data-view="menu">Bekijk het menu</button>
+          <button class="btn secondary" data-view="bestellen">Direct bestellen</button>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="card">
+          <h3>Openingstijden</h3>
+          <p>Di t/m Zo: 12:00 – 20:30<br>Maandag gesloten</p>
+        </div>
+        <div class="card">
+          <h3>Afhalen & Catering</h3>
+          <p>Bestel eenvoudig online en haal je bestelling warm op bij onze toko.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: MENU -->
+    <section id="view-menu" class="view">
+      <h2>Ons Menu</h2>
+      <div class="filter-bar">
+        <input type="text" id="menu-search" placeholder="Zoek een gerecht...">
+        <select id="menu-category">
+          <option value="alle">Alle categorieën</option>
+          <option value="Hoofdgerechten">Hoofdgerechten</option>
+          <option value="Bijgerechten">Bijgerechten</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Dranken">Dranken</option>
+        </select>
+      </div>
+      <div id="menu-grid" class="menu-grid"></div>
+    </section>
+
+    <!-- VIEW 3: BESTELLEN -->
+    <section id="view-bestellen" class="view">
+      <h2>Jouw Bestelling</h2>
+      <div class="order-layout">
+        <div class="card">
+          <h3>Winkelwagen</h3>
+          <div id="cart-items"></div>
+          <p class="total-row">Totaal: <strong id="cart-total">€ 0,00</strong></p>
+        </div>
+
+        <form id="order-form" class="card">
+          <h3>Afhaalgegevens</h3>
+          <label>
+            Naam
+            <input type="text" id="customer-name" required placeholder="Bijv. Daan de Vries">
+          </label>
+          <label>
+            Telefoonnummer
+            <input type="tel" id="customer-phone" required placeholder="06-12345678">
+          </label>
+          <label>
+            Gewenste afhaaltijd
+            <input type="time" id="pickup-time" required>
+          </label>
+          <label>
+            Opmerkingen (bijv. extra sambal)
+            <textarea id="order-notes" rows="3"></textarea>
+          </label>
+          <button type="submit" class="btn primary">Bestelling plaatsen</button>
+          <p id="order-feedback" class="feedback"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW 4: SECURITY / BEHEER -->
+    <section id="view-security" class="view">
+      <h2>Beheer & Beveiliging</h2>
+
+      <!-- Inlogscherm -->
+      <form id="login-form" class="card login-box">
+        <h3>Medewerkerslogin</h3>
+        <p>Voer het beheerderswachtwoord in (standaard: <code>toko2026</code>).</p>
+        <input type="password" id="admin-password" required placeholder="Wachtwoord">
+        <button type="submit" class="btn primary">Inloggen</button>
+        <p id="login-error" class="error-text"></p>
+      </form>
+
+      <!-- Beheerdersomgeving (verborgen tot login) -->
+      <div id="admin-panel" class="hidden">
+        <div class="admin-header">
+          <span>Ingelogd als beheerder</span>
+          <button id="logout-btn" class="btn secondary">Uitloggen</button>
+        </div>
+
+        <div class="order-layout">
+          <form id="add-dish-form" class="card">
+            <h3>Nieuw gerecht toevoegen</h3>
+            <label>
+              Naam gerecht
+              <input type="text" id="dish-name" required>
+            </label>
+            <label>
+              Categorie
+              <select id="dish-category">
+                <option value="Hoofdgerechten">Hoofdgerechten</option>
+                <option value="Bijgerechten">Bijgerechten</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Dranken">Dranken</option>
+              </select>
+            </label>
+            <label>
+              Prijs (€)
+              <input type="number" id="dish-price" step="0.05" min="0.50" required>
+            </label>
+            <label>
+              Beschrijving
+              <input type="text" id="dish-desc" required>
+            </label>
+            <button type="submit" class="btn primary">Toevoegen aan menu</button>
+          </form>
+
+          <div class="card">
+            <h3>Huidige menukaart beheren</h3>
+            <ul id="admin-menu-list" class="admin-list"></ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 1.5rem;">
+          <h3>Binnengekomen bestellingen</h3>
+          <div id="admin-orders-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="beheer.js"></script>
+</body>
+</html>
