@@ -3,18 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toko Layang-Layang</title>
+  <title>Toko Layang Layang Sassenheim | Maleisische & Indonesische gerechten</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- PLACEHOLDER: actiebanner, pas de tekst aan (bijv. "Er is weer Gado Gado!") -->
+  <div class="announce">Er is weer Gado Gado! Bestel online en haal warm op.</div>
+
   <header class="topbar">
-    <div class="brand" data-view="home">Toko Layang-Layang</div>
-    <nav class="nav-links">
+    <button class="brand" data-view="home" aria-label="Naar home">
+      <span class="brand-name">Toko Layang Layang</span>
+      <span class="brand-sub">Malaysian & Indonesian food</span>
+    </button>
+    <nav class="nav-links" aria-label="Hoofdmenu">
       <button class="nav-btn active" data-view="home">Home</button>
       <button class="nav-btn" data-view="menu">Menu</button>
-      <button class="nav-btn" data-view="bestellen">
-        Bestellen (<span id="cart-count">0</span>)
-      </button>
+      <button class="nav-btn nav-cta" data-view="bestellen">Bestellen (<span id="cart-count">0</span>)</button>
       <button class="nav-btn" data-view="security">Beheer</button>
     </nav>
   </header>
@@ -23,14 +30,53 @@
     <!-- VIEW 1: HOME -->
     <section id="view-home" class="view active">
       <div class="hero">
-        <h1>Welkom bij Toko Layang-Layang</h1>
-        <p>Authentieke Indonesische gerechten, dagelijks vers bereid volgens familierecept.</p>
-        <div class="hero-actions">
-          <button class="btn primary" data-view="menu">Bekijk het menu</button>
-          <button class="btn secondary" data-view="bestellen">Direct bestellen</button>
+        <div class="hero-text">
+          <h1>Maleisisch en Indonesisch eten, vers uit de keuken van Sassenheim</h1>
+          <p>Authentieke gerechten, dagelijks vers bereid. Bestel online en haal je bestelling warm op.</p>
+          <div class="hero-actions">
+            <button class="btn accent" data-view="bestellen">Direct bestellen</button>
+            <button class="btn ghost" data-view="menu">Bekijk het menu</button>
+          </div>
+        </div>
+        <!-- PLACEHOLDER: vervang door echte foto (zet bij .ph een background-image in style.css) -->
+        <div class="hero-visual">
+          <div class="ph ph-hero"><span>Hoofdfoto gerecht</span></div>
+          <div class="hero-badge">Special van de week</div>
         </div>
       </div>
+      <div class="batik" aria-hidden="true"></div>
+
+      <h2 class="section-title">Wat wil je eten?</h2>
+      <div class="cat-grid">
+        <button class="cat-card" data-view="menu" data-cat="Gerechten"><strong>Gerechten</strong><span>Nasi, bami, rendang en meer</span></button>
+        <button class="cat-card" data-view="menu" data-cat="Voordeelmenu's"><strong>Voordeelmenu's</strong><span>Een complete maaltijd</span></button>
+        <button class="cat-card" data-view="menu" data-cat="Rijsttafels"><strong>Rijsttafels</strong><span>Samen delen aan tafel</span></button>
+        <button class="cat-card" data-view="menu" data-cat="Bubble Tea"><strong>Bubble Tea</strong><span>Koud, zoet en vers</span></button>
+      </div>
+
+      <!-- PLACEHOLDER: special, pas titel, tekst en prijs aan -->
+      <div class="special">
+        <div class="ph ph-special"><span>Foto special</span></div>
+        <div class="special-body">
+          <span class="tag">Special</span>
+          <h2>Naam van de special</h2>
+          <p>Korte omschrijving van de special van deze week komt hier.</p>
+          <button class="btn accent" data-view="menu">Bekijk het menu</button>
+        </div>
+      </div>
+
+      <h2 class="section-title">Onze favorieten</h2>
+      <div id="featured-grid" class="menu-grid"></div>
+
+      <h2 class="section-title">Wat gasten zeggen</h2>
       <div class="info-grid">
+        <!-- PLACEHOLDER: echte reviews -->
+        <blockquote class="card review">“Hier komt een echte review van een gast.”<cite>Naam gast</cite></blockquote>
+        <blockquote class="card review">“Hier komt een echte review van een gast.”<cite>Naam gast</cite></blockquote>
+        <blockquote class="card review">“Hier komt een echte review van een gast.”<cite>Naam gast</cite></blockquote>
+      </div>
+
+      <div class="info-grid info-band">
         <div class="card">
           <h3>Openingstijden</h3>
           <p>Di t/m Zo: 12:00 – 20:30<br>Maandag gesloten</p>
@@ -39,20 +85,24 @@
           <h3>Afhalen & Catering</h3>
           <p>Bestel eenvoudig online en haal je bestelling warm op bij onze toko.</p>
         </div>
+        <div class="card">
+          <h3>Adres & contact</h3>
+          <p>Straat en huisnummer<br>Postcode, Sassenheim<br>Telefoonnummer</p>
+        </div>
       </div>
     </section>
 
     <!-- VIEW 2: MENU -->
     <section id="view-menu" class="view">
-      <h2>Ons Menu</h2>
+      <h2 class="section-title">Ons menu</h2>
       <div class="filter-bar">
         <input type="text" id="menu-search" placeholder="Zoek een gerecht...">
         <select id="menu-category">
           <option value="alle">Alle categorieën</option>
-          <option value="Hoofdgerechten">Hoofdgerechten</option>
-          <option value="Bijgerechten">Bijgerechten</option>
-          <option value="Snacks">Snacks</option>
-          <option value="Dranken">Dranken</option>
+          <option value="Gerechten">Gerechten</option>
+          <option value="Voordeelmenu's">Voordeelmenu's</option>
+          <option value="Rijsttafels">Rijsttafels</option>
+          <option value="Bubble Tea">Bubble Tea</option>
         </select>
       </div>
       <div id="menu-grid" class="menu-grid"></div>
@@ -60,7 +110,7 @@
 
     <!-- VIEW 3: BESTELLEN -->
     <section id="view-bestellen" class="view">
-      <h2>Jouw Bestelling</h2>
+      <h2 class="section-title">Jouw bestelling</h2>
       <div class="order-layout">
         <div class="card">
           <h3>Winkelwagen</h3>
@@ -87,25 +137,25 @@
             <textarea id="order-notes" rows="3"></textarea>
           </label>
           <button type="submit" class="btn primary">Bestelling plaatsen</button>
-          <p id="order-feedback" class="feedback"></p>
+          <p id="order-feedback" class="feedback" role="status"></p>
         </form>
       </div>
     </section>
 
-    <!-- VIEW 4: SECURITY / BEHEER -->
+    <!-- VIEW 4: BEHEER -->
     <section id="view-security" class="view">
-      <h2>Beheer & Beveiliging</h2>
+      <h2 class="section-title">Beheer</h2>
 
-      <!-- Inlogscherm -->
       <form id="login-form" class="card login-box">
         <h3>Medewerkerslogin</h3>
-        <p>Voer het beheerderswachtwoord in (standaard: <code>toko2026</code>).</p>
-        <input type="password" id="admin-password" required placeholder="Wachtwoord">
+        <label>
+          Wachtwoord
+          <input type="password" id="admin-password" required placeholder="Wachtwoord">
+        </label>
         <button type="submit" class="btn primary">Inloggen</button>
-        <p id="login-error" class="error-text"></p>
+        <p id="login-error" class="error-text" role="alert"></p>
       </form>
 
-      <!-- Beheerdersomgeving (verborgen tot login) -->
       <div id="admin-panel" class="hidden">
         <div class="admin-header">
           <span>Ingelogd als beheerder</span>
@@ -122,10 +172,10 @@
             <label>
               Categorie
               <select id="dish-category">
-                <option value="Hoofdgerechten">Hoofdgerechten</option>
-                <option value="Bijgerechten">Bijgerechten</option>
-                <option value="Snacks">Snacks</option>
-                <option value="Dranken">Dranken</option>
+                <option value="Gerechten">Gerechten</option>
+                <option value="Voordeelmenu's">Voordeelmenu's</option>
+                <option value="Rijsttafels">Rijsttafels</option>
+                <option value="Bubble Tea">Bubble Tea</option>
               </select>
             </label>
             <label>
@@ -152,6 +202,11 @@
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="batik" aria-hidden="true"></div>
+    <p>Toko Layang Layang Sassenheim · Malaysian & Indonesian food</p>
+  </footer>
 
   <script src="app.js"></script>
   <script src="beheer.js"></script>
